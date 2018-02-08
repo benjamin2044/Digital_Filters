@@ -9,9 +9,9 @@ double readings[15], total = 0, average = 0;
 int index = 0; 
 
 // Kalman Filter 
-double R = 40, Q = 1e-1;
+double R = 40.0, Q = 1e-1;
 double Xpe0 = 0.0, Xe1 = 0.0, Xe0 = 0.0;
-double Xe0 = 0.0, Pp1 = 0.0, P0 = 0;
+double P1 = 1, Ppe0 = 0, P0 = 0;
 double  K = 0.0, Z = 0.0; 
 
 void setup() {
@@ -35,11 +35,9 @@ void loop() {
   Serial.print(average, 4);  Serial.print("\t");   
 
   // Kalman Filter
- Xpe0 = Xe1; 
- Ppe0 = Pp1 + Q; 
- K = Ppe0/(Ppe0 + R); 
- Xe0 = Xpe0 + K * (Z - Xpe0); 
- P0 = (1 - K) * Ppe0; 
+ Z = analogRead(0);
+ Xpe0 = Xe1;  Ppe0 = P1 + Q; 
+ K = Ppe0/(Ppe0 + R);    Xe0 = Xpe0 + K * (Z - Xpe0);    P0 = (1 - K) * Ppe0; 
  Serial.println(Xe0, 4);
- Xe1 = Xe0;  Pp1 = P0; 
+ Xe1 = Xe0;  P1 = P0; 
 }
