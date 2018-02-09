@@ -8,17 +8,18 @@
 #include<SoftwareSerial.h>
 
 double S_t = 0, X_t = 0, S_t1 = 0;
-const double a = 0.05; 
+const double a = 0.1; 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(19200);
 }
 
 void loop() {
-  X_t = analogRead(0);
+  int sen_val = analogRead(0);
+  X_t = sen_val * 5.0/1023.0;
   S_t = a * X_t + (1 - a) * S_t1; 
-  Serial.print(X_t, 4); Serial.print("\t");
-  Serial.println(S_t, 4);
+  Serial.print(X_t * 10, 4); Serial.print("\t");
+  Serial.println(S_t * 10, 4);
   delay(50);
   S_t1 = S_t; //update
 }
