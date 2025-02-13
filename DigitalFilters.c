@@ -43,7 +43,6 @@ static float bCoff[2] =  {-1.6329907391512004, 0.690596415073493};
 
 
  /*-----Kalman Filter-----*/
-// process_variance=0.01, measurement_variance=1.2
  void KalmanFilter_Init(KalmanFilter* kf, float process_variance, float measurement_variance, float initial_estimate, float initial_error_estimate) {
      kf->process_variance = process_variance;
      kf->measurement_variance = measurement_variance;
