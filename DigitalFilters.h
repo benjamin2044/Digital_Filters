@@ -5,8 +5,8 @@
  *      Author: BARUN
  */
 
-#ifndef SRC_BOP_DIGITALFILTER_DIGITALFILTERS_H_
-#define SRC_BOP_DIGITALFILTER_DIGITALFILTERS_H_
+#ifndef DIGITALFILTERS_H_
+#define DIGITALFILTERS_H_
 
 /*-----Exponential Filter-----*/
 typedef struct{
@@ -38,4 +38,4 @@ typedef struct {
 void KalmanFilter_Init(KalmanFilter* kf, float process_variance, float measurement_variance, float initial_estimate, float initial_error_estimate);
 float KalmanFilter_Update(KalmanFilter* kf, float measurement);
 
-#endif /* SRC_BOP_DIGITALFILTER_DIGITALFILTERS_H_ */
+#endif /* DIGITALFILTERS_H_ */
